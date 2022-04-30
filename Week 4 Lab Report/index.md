@@ -9,19 +9,29 @@ Write 2-3 sentences describing the relationship between the bug, the symptom, an
 - [Link to the test file for a failure-inducing input](https://github.com/hdoh-ucsd/markdown-parser/blob/main/test-file1.md)  
 [symptom for failure-inducing input #1]  
 ![symptom1](symptom1.png)
--  There was no bug induced by the program. However, there was a symptom that a file with an image reference such as "something.jpeg" was included in the result. This was a faulty program which considered image tag as a link tag.
+-  There was a bug induced by the program where an edge case of a file with an image reference was not created.  
+The following symptom was an image reference "something.jpeg" was included in the result.  
+Our group decided to debug this by adding an edge if case that checks that whether there was a exclamation part before the opening bracket.  
+If case would make the flag false after checking if the link is an image reference check which avoids from adding the link into the StringList for result.  
 ***
 2.  File that uses [] and (), but very far apart in the file  
 - code difference  
 ![code_difference_2](code_difference_2.png)  
 - [Link to the test file for a failure-inducing input](https://github.com/hdoh-ucsd/markdown-parser/blob/main/test-file2.md)
 ![symptom1](symptom2.png)
-- There was no bug induced by the program. However, there was a symptom that the test file that uses [] and () with unvalid gap between them. This was a faulty program that should not be printed.
+- There was a bug induced by the program where an edge case of  a link that uses [] and () with unvalid gap between them was created.  
+The following symptom was an invalid link with a long gap between brackets and parantheses was also printed.  
+Our group decided to debug this by adding an edge if case that checks if the closing bracket and the opening paranthesis is stick together, that is to have an index difference with 1.  
+If case would make the flag false if this is not case and avoid adding the link into the StringList for result.
 ***
 3. File with no links
 - code difference
 ![code_difference_3](code_difference_3.png)  
 - [Link to the test file for a failure-inducing input](https://github.com/hdoh-ucsd/markdown-parser/blob/main/test-file3.md)
 ![symptom1](symptom3.png)
-- There was no bug induced by the program. However, there was a symptom that the test file that added an empty link to the result. This was a faulty program and should be fixed.
+- There was a bug induced by the program where an edge case of a link with no link.  
+The following symptom was an empty comma was added to the result.  
+Our group decided to debug this by adding an edge if case that checks if the opening paranthesis and the closing paranthesis is not stick together, that is to not have an index difference with 1.  
+If they are stick together the flag would avoid adding the link into the StringList for result.  
+
 
