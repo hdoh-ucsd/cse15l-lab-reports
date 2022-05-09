@@ -10,16 +10,17 @@
 
 * Setup Github Access from ieng6  
     * Show where the public key you made is stored on Github and in your user account (screenshot).  
-    ![]()  
+    ![from ieng6 #1](from_ieng6_%231.png)  
 
     * Show where the private key you made is stored on your user account (but not its contents) as a screenshot.  
-    ![]()  
+    ![from ieng6 #2](from_ieng6_%232.png)  
 
     * Show running git commands to commit and push a change to Github while logged into your ieng6 account.  
-    ![]()  
+    ![from ieng6 #3](from_ieng6_%233-1.png)  
 
     * Show a link for the resulting commit.  
-    ![]()  
+    ![from ieng6 #4](from_ieng6_%234.png)
+    [Link for the resulting commit](https://github.com/hdoh-ucsd/markdown-parser/commits/main/test-Ieng6.md)  
 
 * Copy whole directories with scp -r  
     * Show copying your whole markdown-parse directory to your ieng6 account.  
