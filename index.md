@@ -1,34 +1,33 @@
-# Hyungjun Doh's Week 8 Lab Report
-* A link to your markdown-parse repository and a link to the one you reviewed in week 7  
-[link to my markdown-parse repository](https://github.com/hdoh-ucsd/markdown-parser)
-[link to repository reviewed in week 7](https://github.com/ima-quack/markdown-parser)
-* For each test above:  
-    * Decide on what it should produce (i.e., expected output) by using either VScode preview or the CommonMark demo site  
-        * Expected output of Snippet 1
-    ![Expected Output of Snippet 1](ExpectedSnippet1.png)  
-        * Expected output of Snippet 2
-    ![Expected Output of Snippet 2](ExpectedSnippet2.png)  
-        * Expected output of Snippet 3
-    ![Expected Output of Snippet 3](ExpectedSnippet3.png)
+# Hyungjun Doh's Week 10 Lab Report
+**Explain:**
+* How you found the tests with different results (Did you use vimdiff on the results of running a bash for loop? Did you search through manually? Did you use some other programmatic idea?)  
+    * At first, I have tried to use vimdiff on the results of running a bash for loop. However, my code ended up with having infinite loop with the given files. So I used the command below to find the file that worked properly from the given code from week 9. Then I found two files, 
+    test-files/501.md and  test-files/579.md, that have different answers.
+     > bash script.sh > results.txt  
 
-    * Showing the code in MarkdownParseTest.java for how you turned it into a test  
-        * the code in my MarkdownParseTest.java
-        ![the code in my MarkdownParseTest.java](myMarkdownParseTest.png)
-    * For your implementation, the corresponding output when running the tests; if it passed, say so. If it didn’t pass, show the specific part of the JUnit output that shows the test failure.  
-        * Failure for Snippet 1  
-        ![Failure for Snippet 1](myFailureSnippet1.png)  
-        * Failure for Snippet 2  
-        ![Failure for Snippet 2](myFailureSnippet2.png)  
-        * Failure for Snippet 3  
-        ![Failure for Snippet 3](myFailureSnippet3.png)  
-    * For the implementation you reviewed in Week 7, the corresponding output when running the tests; if it passed, say so. If it didn’t pass, show the specific part of the JUnit output that shows the test failure.  
-        * All Failures for Snippets following order accordingly
-        ![week7Failures](week7-testFalied.png)
-* Answer the following questions with 2-3 sentences each:  
-    * Do you think there is a small (<10 lines) code change that will make your program work for snippet 1 and all related cases that use inline code with backticks? If yes, describe the code change. If not, describe why it would be a more involved change.  
-        * No, for the first bug "url.com", it would be possible by making a method that excludes any invalid characters before the opening bracket. However, in order to debug the case of "ucsd.edu", I would have to search for another bracket that follows by the one we are searching for - we opened for - and correspond with the matching ending bracket.
-    * Do you think there is a small (<10 lines) code change that will make your program work for snippet 2 and all related cases that nest parentheses, brackets, and escaped brackets? If yes, describe the code change. If not, describe why it would be a more involved change.  
-        * No, this case is caused by nested parenthesis. As explained above, this would require me to make another method that excludes the cases for any nested parenthesis. One way to do is to iterate a for loop for matching closing parenthesis and reallocate the index when bracket/parenthesis is nested. However, this may cause a Timeout Error.
-    * Do you think there is a small (<10 lines) code change that will make your program work for snippet 3 and all related cases that have newlines in brackets and parentheses? If yes, describe the code change. If not, describe why it would be a more involved change.  
-        * No, snippet 3 induces multiples symptoms for my algorithm. In order to debug this case, I would have to start with consider the case if there is a long gap between the closing Bracket and the opening Parenthesis. In addition, I would have to consider the next Set of Link to avoid any nested brackets/parenthesis or gap errors.
-If your code already works on some/all test cases, include an explanation of what were the code changes that allowed the tests to pass.
+
+* Provide a link to the test-file with different-results (in the provided repository or your repository , either is fine)  
+For each test:   
+    * For test-files/501.md  
+    https://github.com/hdoh-ucsd/markdown-parser/blob/main/501.md
+    * For test-files/579.md
+    https://github.com/hdoh-ucsd/markdown-parser/blob/main/579.md
+
+* Describe which implementation is correct, or neither if both give the wrong output  
+For both test-files, my implementation was incorrect.
+For test-files/501.md, the expected result should be "foo\bar", while my implementation resulted with the symptom that considered backslash into a differenet character.
+
+For test-files/579.md, Both implementation was incorrect. The given file had an image link but each implementations ended up with different symptoms. My implementation ignored the opening bracket and closing bracket covered the url. On the other hand, given implementation resulted with ignoring the brackets. The expected output was not printing any of the link since it was an image link.
+
+* Indicate both actual outputs (provide screenshots) and also what the expected output is (list the links that are expected in the output).  
+    * Actual outputs for my implementation
+![My Actual output for 501](My501.png)
+![My Actual output for 501](My579.png)
+
+    * Actual outputs for given implementation
+![Given Actual output for 501](Given501.png)
+![Given Actual output for 501](Given579.png)
+
+    * Expected outputs
+![expected output for 501](Expected501.png)
+![expected output for 579](Expected579.png)
